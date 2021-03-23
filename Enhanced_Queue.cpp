@@ -13,7 +13,7 @@ public:
 	
 	// Constructor :-
 	EnhancedQueue(int cap = 0) {
-		Capacity = cap;
+		capacity = cap;
 		if (cap == 0)
 			box = nullptr;
 		else
@@ -30,24 +30,24 @@ public:
 	void double_Box() {
 		capacity *= 2;
 		T* temp = new T[capacity];
-		for (int i = 1, k = front + 1; i <= number_Of_Elements; i++) {
+		for (int i = 1, k = front + 1; i <= no_Of_Elements; i++) {
 			temp[i] = box[k];
 			k = next(k);
 		}
 		front = 0;
-		rear = number_Of_Elements;
+		rear = no_Of_Elements;
 		delete[] box;
 		box = temp;
 	}
 	void half_Box() {
 		capacity /= 2;
 		T* temp = new T[capacity];
-		for (int i = 1, k = front + 1; i <= number_Of_Elements; i++) {
+		for (int i = 1, k = front + 1; i <= no_Of_Elements; i++) {
 			temp[i] = box[k];
 			k = next(k);
 		}
 		front = 0;
-		rear = number_Of_Elements;
+		rear = no_Of_Elements;
 		delete[] box;
 		box = temp;
 	}
@@ -61,12 +61,12 @@ public:
 	}
 	// as in usual queue
 	void enqueueAtRear(T& data) {
-		if (number_Of_Elements + 1 >= capacity) {
+		if (no_Of_Elements + 1 >= capacity) {
 			double_Box();
 		}
 		rear = next(rear);
 		box[rear] = data;
-		number_Of_Elements++;
+		no_Of_Elements++;
 	}
 	// usually in queue dequeue occurs at front
 	void dequeueAtFront() {
@@ -74,7 +74,7 @@ public:
 			half_Box();
 		}
 		front = next(front);
-		number_Of_Elements--;
+		no_Of_Elements--;
 	}
 
 	// rear to move back in circular order 
