@@ -67,9 +67,8 @@ public:
 	}
 	
 	// working great
-	const T & peek() {
+	const T& peek() {
 		T a = box[front];
-		front = next(front);
 		return a;
 	}
 	// working Ok
